@@ -1,0 +1,41 @@
+.wrapper {
+  font-family: "Courier New", Courier, monospace;
+  p {
+    font-weight: bold;
+  }
+  input {
+    padding: 15px;
+    border: 1px solid #000;
+  }
+}
+
+.copyWrapper {
+  display: inline-block;
+  margin-top: 20px;
+  div {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 2fr;
+    grid-gap: 10px;
+    align-items: center;
+    button {
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid #000;
+      background-color: #fff;
+      cursor: pointer;
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.display {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 3s ease-out;
+}

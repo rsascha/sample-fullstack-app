@@ -1,0 +1,8 @@
+.wrapper {
+  display: inline-block;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+}
