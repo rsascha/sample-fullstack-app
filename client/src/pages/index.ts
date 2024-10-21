@@ -1,3 +1,3 @@
 export * from "./Home";
-export * from "./UserList";
+export * from "./UserListPage";
 export * from "./RootLayout";

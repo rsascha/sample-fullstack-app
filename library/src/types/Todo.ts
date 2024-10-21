@@ -1,7 +1,7 @@
 export type Todo = {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   completed: boolean;
   requiredBefore: Todo[];
 };
