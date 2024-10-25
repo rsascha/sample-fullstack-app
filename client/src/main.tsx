@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import { Home, UserListPage, RootLayout } from "./pages";
+import { Auth0Provider } from "@auth0/auth0-react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,15 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Auth0Provider
+      domain="dev-usdrboz675x6ip1z.eu.auth0.com"
+      clientId="zaDlZcY3apcpJjfcP985tOFX9RTdEkRv"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <RouterProvider router={router} />
+    </Auth0Provider>
+    ,
   </StrictMode>
 );
