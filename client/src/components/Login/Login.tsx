@@ -4,6 +4,8 @@ export function Login({ className }: { className: string }) {
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0();
 
+  console.debug({ user, isAuthenticated, isLoading });
+
   if (isLoading) {
     return <div>Loading...</div>;
   }

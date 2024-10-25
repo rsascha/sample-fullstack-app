@@ -1,35 +1,31 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { vi } from "vitest";
+import { Mock } from "@storybook/test";
 import { Login } from "./Login";
-import { Auth0Provider } from "@auth0/auth0-react";
-
-vi.mock("@auth0/auth0-react", () => ({
-  Auth0Provider: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-  useAuth0: () => ({
-    loginWithRedirect: () => {},
-    logout: () => {},
-    user: {},
-    isAuthenticated: false,
-    isLoading: false,
-  }),
-}));
 
 const meta: Meta<typeof Login> = {
   component: Login,
-  decorators: [
-    (Story) => (
-      <Auth0Provider>
-        <Story />
-      </Auth0Provider>
-    ),
-  ],
 };
 
 export default meta;
 type Story = StoryObj<typeof Login>;
 
 export const Primary: Story = {
+  async beforeEach() {
+    (useAuth0 as Mock).mockReturnValue({
+      ...useAuth0,
+      isLoading: false,
+    });
+  },
+  args: {},
+};
+
+export const Loading: Story = {
+  async beforeEach() {
+    (useAuth0 as Mock).mockReturnValue({
+      ...useAuth0,
+      isLoading: true,
+    });
+  },
   args: {},
 };
