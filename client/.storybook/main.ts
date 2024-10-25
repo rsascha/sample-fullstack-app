@@ -19,8 +19,8 @@ const config: StorybookConfig = {
         ...config.resolve?.alias,
         "@auth0/auth0-react": path.resolve(
           __dirname,
-          "..",
-          "src/wrapper/auth0-react.mock.ts"
+          "mocks",
+          "auth0-react.ts"
         ),
       };
     }
