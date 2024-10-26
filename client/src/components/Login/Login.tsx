@@ -1,47 +1,44 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoadingIndicator } from "@client/components";
+import styles from "./Login.module.css";
+import { FaRegUser, FaUser } from "react-icons/fa6";
 
-export function Login({ className }: { className: string }) {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
-    useAuth0();
+type WrapperProps = {
+  className: string;
+  children: React.ReactNode;
+};
+
+function Wrapper({ className, children }: WrapperProps) {
+  const wrapperClassName = `${styles.wrapper} ${className}`;
+  return <div className={wrapperClassName}>{children}</div>;
+}
+
+type LoginProps = {
+  className: string;
+};
+
+export function Login({ className }: LoginProps) {
+  const { loginWithRedirect, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) {
     return (
-      <div>
+      <Wrapper className={className}>
         <LoadingIndicator />
-      </div>
+      </Wrapper>
     );
   }
 
   if (!isAuthenticated) {
     return (
-      <div className={className}>
-        <button onClick={() => loginWithRedirect()}>Log In</button>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div className={className}>
-        <p>There was an issue logging you in.</p>
-        <button onClick={() => loginWithRedirect()}>Log In</button>
-      </div>
+      <Wrapper className={className}>
+        <FaRegUser onClick={() => loginWithRedirect()} />
+      </Wrapper>
     );
   }
 
   return (
-    <div className={className}>
-      <img src={user.picture} alt={user.name} />
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.origin } })
-        }
-      >
-        Log Out
-      </button>
-    </div>
+    <Wrapper className={className}>
+      <FaUser onClick={() => {}} />
+    </Wrapper>
   );
 }

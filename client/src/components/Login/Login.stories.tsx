@@ -5,6 +5,7 @@ import { Login } from "./Login";
 
 const meta: Meta<typeof Login> = {
   component: Login,
+  decorators: [(Story) => <Story />],
 };
 
 export default meta;
@@ -25,18 +26,6 @@ export const IsLoading: Story = {
     (useAuth0 as Mock).mockReturnValue({
       ...useAuth0,
       isLoading: true,
-    });
-  },
-  args: {},
-};
-
-export const NoUser: Story = {
-  async beforeEach() {
-    (useAuth0 as Mock).mockReturnValue({
-      ...useAuth0,
-      isLoading: false,
-      isAuthenticated: true,
-      user: null,
     });
   },
   args: {},
