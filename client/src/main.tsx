@@ -7,13 +7,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import { Home, UserListPage, RootLayout } from "./pages";
+import { Home, UserListPage, RootLayout, Profile } from "./pages";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
+      <Route path="profile" element={<Profile />} />
       <Route path="user-list" element={<UserListPage />} />
     </Route>
   )

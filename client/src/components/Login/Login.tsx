@@ -2,6 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { LoadingIndicator } from "@client/components";
 import styles from "./Login.module.css";
 import { FaRegUser, FaUser } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 type WrapperProps = {
   className: string;
@@ -38,7 +39,9 @@ export function Login({ className }: LoginProps) {
 
   return (
     <Wrapper className={className}>
-      <FaUser onClick={() => {}} />
+      <Link to="/profile">
+        <FaUser />
+      </Link>
     </Wrapper>
   );
 }
