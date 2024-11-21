@@ -10,7 +10,7 @@ type ErrorDisplayProps = {
 export function ErrorDisplay({
   error,
   displayDetails = true,
-}: ErrorDisplayProps): JSX.Element {
+}: ErrorDisplayProps) {
   let name = "";
   let message = "";
   let stack = "";

@@ -1,9 +1,21 @@
 import { Message } from "@library/types";
 import express, { NextFunction, Request, Response } from "express";
+// import { auth } from "express-openid-connect";
+
+// const config = {
+//   authRequired: false,
+//   auth0Logout: true,
+//   secret: "a long, randomly-generated string stored in env",
+//   baseURL: "http://localhost:3000",
+//   clientID: "4oiCxHnMJvUWVwkmOG57eEk6OCEbbTlC",
+//   issuerBaseURL: "https://dev-usdrboz675x6ip1z.eu.auth0.com",
+// };
 
 export const app = express();
 
 app.use(express.json());
+
+// app.use(auth(config));
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   console.debug(
@@ -15,16 +27,13 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//   // console.debug(req.oidc);
+//   res.json({ success: true });
+// });
 
-app.get("/api", (req, res) => {
-  const message: Message = {
-    title: "Hello World! (from server)",
-    description: "This is a simple message from the server.",
-  };
-  res.json(message);
+app.get("/api", (_, res) => {
+  res.json({ success: true });
 });
 
 app.post("/api/users", (req, res) => {

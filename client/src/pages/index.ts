@@ -1,3 +1,4 @@
 export * from "./Home";
-export * from "./UserList";
+export * from "./Profile";
 export * from "./RootLayout";
+export * from "./UserListPage";
