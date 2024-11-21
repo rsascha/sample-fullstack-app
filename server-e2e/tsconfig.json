@@ -1,0 +1,10 @@
+{
+  "include": ["src", "../library"],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "paths": {
+      "@server-e2e/*": ["./src/*"],
+      "@library/*": ["../library/src/*"]
+    }
+  }
+}
